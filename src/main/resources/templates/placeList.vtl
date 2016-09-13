@@ -1,0 +1,21 @@
+<h1>Places You've Been!</h1>
+
+#if ($places)
+  <ul>
+    #foreach($place in $places)
+      #if(!$place.getName().equals(""))
+        <li>$place.getName()</li>
+      #end
+        <ul>
+          <li>$place.getPlace()</li>
+          <ul>
+            <li>$place.getDescription()</li>
+          </ul>
+        </ul>
+    #end
+  </ul>
+#else
+  <p> no places entered </p>
+#end
+
+<p><a href = "/">Go back</a> to add more places</p>

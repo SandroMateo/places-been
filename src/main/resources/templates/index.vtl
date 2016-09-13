@@ -1,20 +1,14 @@
-<h1>places you been!</h1>
-
-#if ($places)
-  <ul>
-    #foreach($place in $places)
-      <li>$place.getDescription()</li>
-    #end
-  </ul>
-#else
-  <p> no places entered </p>
-#end
-
-<p>add a new place:</p>
+<h1>Tell Us About Your Travels</h1>
 
 <form action="/places" method="post">
-  <label for = "description">Places Description</label>
+  <label for = "name">Your Name:</label>
+  <input id = "name" name="name" type="text">
+
+  <label for = "place">Add A Place:</label>
+  <input id = "place" name="place" type="text">
+
+  <label for = "description">Places Description:</label>
   <input id = "description" name="description" type="text">
 
-  <button type="submit" class="btn btn-success">Add Place you've been!</button>
+  <button type="submit" class="btn btn-success">Add!</button>
 </form>

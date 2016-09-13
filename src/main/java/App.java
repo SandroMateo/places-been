@@ -13,7 +13,6 @@ public class App {
 
     get ("/", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
-      model.put("places", request.session().attribute("places"));
       model.put("template", "templates/index.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
@@ -26,12 +25,13 @@ public class App {
         places = new ArrayList<Places>();
         request.session().attribute("places", places);
       }
-
+      String name = request.queryParams("name");
+      String place = request.queryParams("place");
       String description = request.queryParams("description");
-      Places newPlace = new Places(description);
+      Places newPlace = new Places(name, place, description);
       places.add(newPlace);
-
-      model.put("template", "templates/success.vtl");
+      model.put("places", request.session().attribute("places"));
+      model.put("template", "templates/placeList.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
   }
